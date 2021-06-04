@@ -1,14 +1,19 @@
 @import "../../../sass/mixins";
 @import "../../../sass/variables";
+@import "../../../sass/layout";
 
 .nav {
+  padding: 0 $gap * 2;
+  margin-bottom: $gap / 2;
+  background-color: $white;
   @include flex(row, space-between, center);
 
   &__links {
     @include flex(row, space-between, center);
   }
+
   li:not(:last-child) {
-    margin-right: 0.5rem;
+    margin-right: $gap;
     // border-bottom: 2px solid transparent;
   }
 }

@@ -1,0 +1,14 @@
+@import "../../../sass/mixins";
+@import "../../../sass/variables";
+
+.nav {
+  @include flex(row, space-between, center);
+
+  &__links {
+    @include flex(row, space-between, center);
+  }
+  li:not(:last-child) {
+    margin-right: 0.5rem;
+    // border-bottom: 2px solid transparent;
+  }
+}

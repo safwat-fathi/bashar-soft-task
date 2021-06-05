@@ -1,0 +1,12 @@
+.card {
+  padding: 1rem;
+  background-color: white;
+
+  &__details {
+    margin: 1rem 0;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

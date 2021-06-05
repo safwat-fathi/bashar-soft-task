@@ -1,0 +1,19 @@
+@import "../../../sass/mixins";
+@import "../../../sass/variables";
+
+.tags {
+  @include flex(row, unset, center);
+  flex-wrap: wrap;
+
+  li {
+    white-space: nowrap;
+    background-color: $tag-bg;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 5px;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

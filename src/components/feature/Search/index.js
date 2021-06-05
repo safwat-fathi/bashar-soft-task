@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 // api
-import { debounceFunction } from "../../api";
+import { debounceFunction } from "../../../api";
 // assets
 import SearchIcon from "./search.svg";
 // styles
@@ -22,7 +22,7 @@ const Search = () => {
   };
 
   const debounceSearch = useCallback(
-    debounceFunction((nextValue) => fetchQuery(nextValue), 1000),
+    debounceFunction((nextValue) => fetchQuery(nextValue), 800),
     []
   );
 
@@ -51,6 +51,28 @@ const Search = () => {
         <div className="image">
           <img src={SearchIcon} alt="Search" />
         </div>
+      </div>
+      <div className="search__results">
+        <ul>
+          <li>
+            <a href="#">link 1</a>
+          </li>
+          <li>
+            <a href="#">link 2</a>
+          </li>
+          <li>
+            <a href="#">link 3</a>
+          </li>
+          <li>
+            <a href="#">link 3</a>
+          </li>
+          <li>
+            <a href="#">link 3</a>
+          </li>
+          <li>
+            <a href="#">link 3</a>
+          </li>
+        </ul>
       </div>
     </div>
   );

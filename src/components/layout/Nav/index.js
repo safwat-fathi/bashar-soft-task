@@ -1,4 +1,6 @@
 import React from "react";
+// react router
+import { Link } from "react-router-dom";
 // styles
 import "./style.scss";
 
@@ -12,13 +14,13 @@ const Nav = () => {
       </div>
       <ul className="nav__links">
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Search</a>
+          <Link to="/search">Search</Link>
         </li>
         <li>
-          <a href="#">History</a>
+          <Link to="/history">History</Link>
         </li>
       </ul>
     </nav>

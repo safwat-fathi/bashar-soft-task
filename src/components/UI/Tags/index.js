@@ -7,9 +7,8 @@ const Tag = () => {
     <ul className="tags">
       <li>operation monitoring</li>
       <li>active listening</li>
-      <li>information ordering</li>
       <li>active listening</li>
-      <li>operation monitoring</li>
+      <li>information ordering</li>
     </ul>
   );
 };

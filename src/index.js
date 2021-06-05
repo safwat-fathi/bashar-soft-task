@@ -1,11 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// Base styles
 import "./index.scss";
+// Main component
 import App from "./App";
+// redux
+import { Provider } from "react-redux";
+import { fetchJobs } from "./redux/slices/jobs.slice";
+import store from "./redux/store";
+
+store.dispatch(fetchJobs());
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

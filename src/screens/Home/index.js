@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 // ui components
 import Card from "../../components/UI/Card";
 import Tags from "../../components/UI/Tags";
-// layout components
-import Main from "../../components/layout/Main";
+// redux toolkit
+import { useSelector, useDispatch } from "react-redux";
+// redux
+// import {  } from "../../redux/slices/jobs.slice";
 
 const Home = () => {
+  const jobs = useSelector((state) => state.jobs);
+
+  useEffect(() => {
+    // dispatch(fetchJobs());
+  }, []);
+
+  useEffect(() => {
+    console.log(jobs);
+  }, [jobs]);
+
   return (
     <>
       <h1>Home</h1>

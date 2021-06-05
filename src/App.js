@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // layout components
 import Nav from "./components/layout/Nav";
+// layout components
 import Main from "./components/layout/Main";
 // features components
 import SearchInput from "./components/feature/SearchInput";

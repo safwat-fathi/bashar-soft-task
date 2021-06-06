@@ -10,6 +10,7 @@ import SearchInput from "./feature/SearchInput";
 // screens
 import Home from "./screens/Home";
 import Search from "./screens/Search";
+import Job from "./screens/Job";
 // styles
 import styles from "./App.module.scss";
 
@@ -27,9 +28,9 @@ const App = () => {
             <Route path="/search">
               <Search />
             </Route>
-            {/* <Route path="/jobs/:uuid">
-              <Jobs />
-            </Route> */}
+            <Route path="/jobs/:jobId">
+              <Job />
+            </Route>
           </Main>
         </Switch>
       </div>

@@ -9,16 +9,8 @@ import { useSelector } from "react-redux";
 import { jobsSelectors } from "../../redux/slices/jobs.slice";
 
 const Home = () => {
-  // let id = "0cfb09fa1c6691fd6d77a3d3743fa8bc";
   const jobsAll = useSelector(jobsSelectors.selectAll);
-  // const selectJobById = useSelector((state) =>
-  //   jobsSelectors.selectById(state, id)
-  // );
   const status = useSelector((state) => state.jobs.status);
-
-  useEffect(() => {}, []);
-
-  console.log(status);
 
   if (status === "loading") {
     return (

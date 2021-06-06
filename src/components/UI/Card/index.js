@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // styles
 import "./style.scss";
 
-const Card = ({ children }) => {
+const Card = ({ children, title, id }) => {
   return (
     <div className="card">
       <div className="card__title">
-        <h1>Card title</h1>
+        <h1>{title}</h1>
       </div>
       <div className="card__tags">
         <p>Related Skills:</p>
         {children}
       </div>
       <div className="card__details">
-        <a href="#">View Job details</a>
+        <Link to={`/jobs/${id}`}>View Job details</Link>
       </div>
     </div>
   );

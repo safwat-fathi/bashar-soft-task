@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // Base styles
 import "./index.scss";
-// Main component
+// App component
 import App from "./App";
 // redux
 import { Provider } from "react-redux";

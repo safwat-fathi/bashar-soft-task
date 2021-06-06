@@ -10,9 +10,6 @@ import SearchInput from "./feature/SearchInput";
 // screens
 import Home from "./screens/Home";
 import Search from "./screens/Search";
-
-// import Card from "./components/UI/Card";
-// import Tags from "./components/UI/Tags";
 // styles
 import "./App.scss";
 
@@ -30,11 +27,11 @@ const App = () => {
             <Route path="/search">
               <Search />
             </Route>
+            {/* <Route path="/jobs/:uuid">
+              <Jobs />
+            </Route> */}
           </Main>
         </Switch>
-        {/* <div className="title">
-        <h1>All Jobs (255)</h1>
-      </div> */}
       </div>
     </Router>
   );

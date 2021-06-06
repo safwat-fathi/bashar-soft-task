@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 // api
-import { debounceFunction } from "../../../services";
+import { debounceFunction } from "../../services";
 // assets
 import SearchIcon from "./search.svg";
 // styles

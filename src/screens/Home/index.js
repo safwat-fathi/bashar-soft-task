@@ -3,20 +3,30 @@ import React, { useEffect } from "react";
 import Card from "../../components/UI/Card";
 import Tags from "../../components/UI/Tags";
 // redux toolkit
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // redux
-// import {  } from "../../redux/slices/jobs.slice";
+import { jobsSelectors } from "../../redux/slices/jobs.slice";
 
 const Home = () => {
-  const jobs = useSelector((state) => state.jobs);
+  let id = "0cfb09fa1c6691fd6d77a3d3743fa8bc";
+  const jobsEntities = useSelector(jobsSelectors.selectEntities);
+  const jobsTotal = useSelector(jobsSelectors.selectTotal);
+  const selectJobById = useSelector((state) =>
+    jobsSelectors.selectById(state, id)
+  );
+  // const jobs = useSelector((state) => state.jobs);
 
   useEffect(() => {
     // dispatch(fetchJobs());
   }, []);
 
-  useEffect(() => {
-    console.log(jobs);
-  }, [jobs]);
+  // console.log(jobsEntities);
+  console.log(selectJobById);
+  // useEffect(() => {
+
+  // }, [jobsTotal]);
+
+  // console.log(jobsIds);
 
   return (
     <>

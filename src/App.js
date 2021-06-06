@@ -6,7 +6,7 @@ import Nav from "./components/layout/Nav";
 // layout components
 import Main from "./components/layout/Main";
 // features components
-import SearchInput from "./components/feature/SearchInput";
+import SearchInput from "./feature/SearchInput";
 // screens
 import Home from "./screens/Home";
 import Search from "./screens/Search";

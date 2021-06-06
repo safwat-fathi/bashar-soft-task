@@ -4,25 +4,20 @@ import {
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 
-const jobsAdapter = createEntityAdapter();
-
 // thunk functions
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
   const response = await fetch(`http://api.dataatwork.org/v1/jobs`);
   const data = await response.json();
-  // console.log(data);
   return data;
 });
 
-const initialState = {
-  status: "idle",
-  entities: {},
-  ids: [],
-};
+const jobsAdapter = createEntityAdapter({
+  selectId: (job) => job.uuid,
+});
 
 const jobsSlice = createSlice({
   name: "jobs",
-  initialState,
+  initialState: jobsAdapter.getInitialState(),
   reducers: {
     // todoAdded(state, action) {
     //   const todo = action.payload;
@@ -40,15 +35,11 @@ const jobsSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
-        const newEntites = {};
-
-        action.payload.forEach((job) => {
-          newEntites[job.uuid] = job;
-        });
-
-        state.entities = newEntites;
+        jobsAdapter.setAll(state, action.payload);
         state.status = "idle";
-        // console.log(state.entities);
+      })
+      .addCase(fetchJobs.rejected, (state) => {
+        state.status = "loading";
       });
   },
 });
@@ -57,4 +48,4 @@ const jobsSlice = createSlice({
 
 export default jobsSlice.reducer;
 
-export const { selectAll } = jobsAdapter.getSelectors((state) => state.jobs);
+export const jobsSelectors = jobsAdapter.getSelectors((state) => state.jobs);

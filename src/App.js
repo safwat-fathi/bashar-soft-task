@@ -11,12 +11,12 @@ import SearchInput from "./feature/SearchInput";
 import Home from "./screens/Home";
 import Search from "./screens/Search";
 // styles
-import "./App.scss";
+import styles from "./App.module.scss";
 
 const App = () => {
   return (
     <Router>
-      <div className="App">
+      <div className={styles.App}>
         <Nav />
         <SearchInput />
         <Switch>

@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // styles
-import "./style.scss";
+import styles from "./Card.module.scss";
 
 const Card = ({ children, title, id }) => {
   return (
-    <div className="card">
-      <div className="card__title">
+    <div className={styles.container}>
+      <div className={styles.title}>
         <h1>{title}</h1>
       </div>
-      <div className="card__tags">
+      <div className={styles.tags}>
         <p>Related Skills:</p>
         {children}
       </div>
-      <div className="card__details">
+      <div className={styles.details}>
         <Link to={`/jobs/${id}`}>View Job details</Link>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { debounceFunction } from "../../services";
 // assets
 import SearchIcon from "./search.svg";
 // styles
-import "./style.scss";
+import styles from "./SearchInput.module.scss";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,28 +31,23 @@ const Search = () => {
     debounceSearch(e.target.value);
   };
 
-  // useEffect(() => {
-  //   console.log(searchQuery);
-  //   fetchQuery(searchQuery);
-  // }, [searchQuery]);
-
   useEffect(() => {
     // console.log(response);
   }, [response]);
 
   return (
-    <div className="search">
-      <div role="form" className="search__form">
+    <div className={styles.search}>
+      <div role="form" className={styles.form}>
         <input
           type="text"
           placeholder="search keyword"
           onChange={handleSearch}
         />
-        <div className="image">
+        <div className={styles.image}>
           <img src={SearchIcon} alt="Search" />
         </div>
       </div>
-      <div className="search__results">
+      <div className={styles.results}>
         <ul>
           <li>
             <a href="#">link 1</a>

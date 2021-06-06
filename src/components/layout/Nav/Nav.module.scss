@@ -7,13 +7,13 @@
   margin-bottom: $gap / 2;
   background-color: $white;
   @include flex(row, space-between, center);
+}
 
-  &__links {
-    @include flex(row, space-between, center);
-  }
+.links {
+  @include flex(row, space-between, center);
+}
 
-  li:not(:last-child) {
-    margin-right: $gap;
-    // border-bottom: 2px solid transparent;
-  }
+li:not(:last-child) {
+  margin-right: $gap;
+  // border-bottom: 2px solid transparent;
 }

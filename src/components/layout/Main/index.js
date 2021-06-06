@@ -1,19 +1,17 @@
 import React from "react";
 // styles
-import "./style.scss";
+import styles from "./Main.module.scss";
 
 const Main = ({ children }) => {
   return (
-    <main>
-      {children}
-      {/* <div className="cards">
-        <Card children={<Tag />} />
-        <Card children={<Tag />} />
-        <Card children={<Tag />} />
+    <main style={styles.main}>
+      <div className={styles.cards}>
+        {/* <Card children={<Tags />} /> */}
+        {children}
       </div>
-      <aside className="app-sidebar">
+      <aside className={styles.sidebar}>
         <h1>app-sidebar</h1>
-      </aside> */}
+      </aside>
     </main>
   );
 };

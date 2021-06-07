@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      {jobsAll.slice(0, -1).map((job) => {
+      {jobsAll.map((job) => {
         return <Card title={job.title} id={job.uuid} key={job.uuid} />;
       })}
     </>

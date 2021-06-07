@@ -8,9 +8,9 @@ const Nav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles}>
-        <a href="#">
+        <Link to="/">
           <h3>JobsNow</h3>
-        </a>
+        </Link>
       </div>
       <ul className={styles.links}>
         <li>

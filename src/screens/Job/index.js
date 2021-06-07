@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+// redux toolkit
+import { useDispatch } from "react-redux";
+// redux
+import { fetchJobSkillsById } from "../../redux/slices/jobs.slice";
 
 const Jobs = () => {
+  const dispatch = useDispatch();
   const { jobId } = useParams();
 
-  console.log(jobId);
+  useEffect(() => {
+    console.log(jobId);
+    dispatch(fetchJobSkillsById(jobId));
+  }, []);
 
   return (
     <div>

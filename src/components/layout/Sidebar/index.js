@@ -1,10 +1,10 @@
 import React from "react";
 // styles
-import "./style.scss";
+import styles from "./Sidebar.module.scss";
 
 const Sidebar = () => {
   return (
-    <aside role="sidebar">
+    <aside className={styles.sidebar} role="sidebar">
       <h1>sidebar</h1>
     </aside>
   );

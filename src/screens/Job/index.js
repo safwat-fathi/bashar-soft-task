@@ -1,17 +1,28 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 // redux toolkit
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // redux
-import { fetchJobSkillsById } from "../../redux/slices/jobs.slice";
+import {
+  jobsSelectors,
+  skillsSelectors,
+  fetchJobSkillsById,
+} from "../../redux/slices/jobs.slice";
 
 const Jobs = () => {
-  const dispatch = useDispatch();
   const { jobId } = useParams();
+  const dispatch = useDispatch();
+  // skills selectors
+  const skillsAll = useSelector(skillsSelectors.selectAll);
+  // jobs selectors
+  const jobById = useSelector((state) =>
+    jobsSelectors.selectById(state, jobId)
+  );
 
   useEffect(() => {
-    console.log(jobId);
     dispatch(fetchJobSkillsById(jobId));
+    console.log(jobById);
+    console.log(skillsAll);
   }, []);
 
   return (

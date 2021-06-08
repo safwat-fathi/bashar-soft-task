@@ -20,8 +20,6 @@ export const fetchJobById = createAsyncThunk(
     const response = await fetch(`http://api.dataatwork.org/v1/jobs/${jobId}`);
     const data = await response.json();
 
-    console.log(data);
-
     return data;
   }
 );
@@ -35,15 +33,7 @@ export const fetchJobSkillsById = createAsyncThunk(
     );
     const data = await response.json();
 
-    // console.log(data.skills);
-
     return data.skills;
-    // return data.skills.map(({ skill_uuid, skill_name, skill_type,description }) => ({
-    //   uuid: skill_uuid,
-    //   name: skill_name,
-    //   type: skill_type,
-    //   description: description
-    // }));
   }
 );
 
@@ -108,7 +98,6 @@ const jobsSlice = createSlice({
       .addCase(fetchJobSkillsById.fulfilled, (state, action) => {
         // skillsAdapter.setAll(state, action.payload);
         skillsAdapter.setAll(state.skills, action.payload);
-        console.log(action.payload);
         state.status = "idle";
       })
       .addCase(fetchJobSkillsById.rejected, (state) => {
@@ -122,3 +111,6 @@ const jobsSlice = createSlice({
 export default jobsSlice.reducer;
 
 export const jobsSelectors = jobsAdapter.getSelectors((state) => state.jobs);
+export const skillsSelectors = skillsAdapter.getSelectors(
+  (state) => state.jobs.skills
+);

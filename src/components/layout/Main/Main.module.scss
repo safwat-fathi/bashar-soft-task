@@ -5,19 +5,3 @@ main {
   margin: $gap * 2;
   @include flex(column, unset, unset);
 }
-
-.cards {
-  order: 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  // grid-template-rows: 1fr 1fr 1fr;
-  gap: 1em 1em;
-  // grid-template-areas:
-  // 	". . . ."
-  // 	". . . ."
-  // 	". . . .";
-}
-
-.sidebar {
-  order: 1;
-}

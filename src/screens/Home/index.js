@@ -11,11 +11,13 @@ import { useSelector } from "react-redux";
 import { jobsSelectors } from "../../redux/slices/jobs.slice";
 
 const Home = () => {
+  // all jobs fetched from api
   const jobsAll = useSelector(jobsSelectors.selectAll);
+  // jobs slice status
   const status = useSelector((state) => state.jobs.status);
 
   useEffect(() => {
-    console.log(jobsAll);
+    // console.log(jobsAll);
   }, []);
 
   if (status === "loading") {
@@ -33,7 +35,6 @@ const Home = () => {
           return <Card title={job.title} id={job.uuid} key={job.uuid} />;
         })}
       </CardsContainer>
-      <Sidebar />
     </>
   );
 };

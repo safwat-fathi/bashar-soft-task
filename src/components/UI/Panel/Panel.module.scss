@@ -1,0 +1,11 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.panel {
+  background-color: $panel-bg;
+  padding: $gap * 2;
+}
+
+.list {
+  @include flex(row, space-between, center);
+}

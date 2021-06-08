@@ -37,6 +37,19 @@ export const fetchJobSkillsById = createAsyncThunk(
   }
 );
 
+// fetch job related jobs by ID cases
+export const fetchJobRelatedJobsById = createAsyncThunk(
+  "jobs/fetchJobRelatedJobsById",
+  async (jobId) => {
+    const response = await fetch(
+      `http://api.dataatwork.org/v1/jobs/${jobId}/related_jobs`
+    );
+    const data = await response.json();
+
+    return data.related_job_titles;
+  }
+);
+
 // slice adapters
 const jobsAdapter = createEntityAdapter({
   selectId: (job) => job.uuid,
@@ -46,11 +59,16 @@ const skillsAdapter = createEntityAdapter({
   selectId: (skill) => skill.skill_uuid,
 });
 
+const relatedJobsAdapter = createEntityAdapter({
+  selectId: (job) => job.uuid,
+});
+
 const jobsSlice = createSlice({
   name: "jobs",
   initialState: jobsAdapter.getInitialState({
     status: "idle",
     skills: skillsAdapter.getInitialState(),
+    relatedJobs: relatedJobsAdapter.getInitialState(),
   }),
   reducers: {
     // todoAdded(state, action) {
@@ -93,15 +111,28 @@ const jobsSlice = createSlice({
     // fetch job skills by ID cases
     builder
       .addCase(fetchJobSkillsById.pending, (state) => {
-        state.status = "loading";
+        state.skills.status = "loading";
       })
       .addCase(fetchJobSkillsById.fulfilled, (state, action) => {
         // skillsAdapter.setAll(state, action.payload);
         skillsAdapter.setAll(state.skills, action.payload);
-        state.status = "idle";
+        state.skills.status = "idle";
       })
       .addCase(fetchJobSkillsById.rejected, (state) => {
-        state.status = "loading";
+        state.skills.status = "loading";
+      });
+
+    // fetch job related jobs by ID cases
+    builder
+      .addCase(fetchJobRelatedJobsById.pending, (state) => {
+        state.relatedJobs.status = "loading";
+      })
+      .addCase(fetchJobRelatedJobsById.fulfilled, (state, action) => {
+        relatedJobsAdapter.setAll(state.relatedJobs, action.payload);
+        state.relatedJobs.status = "idle";
+      })
+      .addCase(fetchJobRelatedJobsById.rejected, (state) => {
+        state.relatedJobs.status = "loading";
       });
   },
 });
@@ -110,7 +141,13 @@ const jobsSlice = createSlice({
 
 export default jobsSlice.reducer;
 
+// jobs selectors
 export const jobsSelectors = jobsAdapter.getSelectors((state) => state.jobs);
+// skills selectors
 export const skillsSelectors = skillsAdapter.getSelectors(
   (state) => state.jobs.skills
+);
+// related jobs selectors
+export const relatedJobsSelectors = relatedJobsAdapter.getSelectors(
+  (state) => state.jobs.relatedJobs
 );

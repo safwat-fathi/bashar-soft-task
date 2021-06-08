@@ -98,10 +98,12 @@ const jobsSlice = createSlice({
     // fetch a job by ID cases
     builder
       .addCase(fetchJobById.pending, (state) => {
+        console.log("fetchJobById.pending");
         state.status = "loading";
       })
       .addCase(fetchJobById.fulfilled, (state, action) => {
-        // jobsAdapter.setAll(state, action.payload);
+        console.log(action.payload);
+        jobsAdapter.upsertOne(state, action.payload);
         state.status = "idle";
       })
       .addCase(fetchJobById.rejected, (state) => {

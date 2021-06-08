@@ -15,6 +15,7 @@ import {
   relatedJobsSelectors,
   fetchJobSkillsById,
   fetchJobRelatedJobsById,
+  fetchJobById,
 } from "../../redux/slices/jobs.slice";
 
 const Jobs = () => {
@@ -24,6 +25,8 @@ const Jobs = () => {
   const skillsAll = useSelector(skillsSelectors.selectAll);
   // skills status
   const skillsStatus = useSelector((state) => state.jobs.skills.status);
+  // jobs slice status
+  const jobsStatus = useSelector((state) => state.jobs.status);
   // jobs selectors
   const jobById = useSelector((state) =>
     jobsSelectors.selectById(state, jobId)
@@ -34,11 +37,24 @@ const Jobs = () => {
   useEffect(() => {
     dispatch(fetchJobSkillsById(jobId));
     dispatch(fetchJobRelatedJobsById(jobId));
+    // dispatch(fetchJobById(jobId));
+
+    // if job is not registered in app state
+    // fetch it from api
   }, []);
 
-  console.log(relatedJobs);
+  useEffect(() => {
+    console.log(`job ID changed...`);
 
-  if (skillsStatus === "loading") {
+    if (jobById === undefined) {
+      console.log(`no jobById found`);
+      dispatch(fetchJobById(jobId));
+    }
+  }, [jobId]);
+
+  // console.log(jobsStatus);
+
+  if (skillsStatus === "loading" || jobsStatus === "loading") {
     return (
       <div>
         <Spinner />
@@ -48,7 +64,7 @@ const Jobs = () => {
 
   return (
     <>
-      <h1>{jobById.title}</h1>
+      <h1>{jobById?.title}</h1>
       <PanelsContainer>
         {skillsAll.map(
           ({
